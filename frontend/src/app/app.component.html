@@ -1,0 +1,8 @@
+<div [className]="selected">
+  <select [(ngModel)]="selected">
+    <option *ngFor="let theme of themes" [value]="theme">{{ theme }}</option>
+  </select>
+  <button mat-button (click)="newTheme()">Shrani izbiro</button>
+
+  <router-outlet></router-outlet>
+</div>
