@@ -74,7 +74,9 @@ Zahvaljujemo se Žiki Jeram, Damijan Jančarju in Filip Strajnarju za potrpežlj
 
 ## Licenca
 
-Projekt je dostopen pod pogoji licence JAVNA LICENCA EVROPSKE UNIJE v. 1.2 s SPDX: `EUPL-1.2`.
+Projekt je dostopen pod pogoji licence JAVNA LICENCA EVROPSKE UNIJE v. 1.2. Dokument je dostopen v [LICENSE](https://github.com/StrajnarFilip/Vaja_RPO/blob/master/README.md) datoteki.
+
+SPDX: `EUPL-1.2`.
 
 [Licenca v drugih jezikih](https://joinup.ec.europa.eu/collection/eupl/eupl-text-eupl-12)
 
