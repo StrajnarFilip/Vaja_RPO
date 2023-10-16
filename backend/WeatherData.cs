@@ -8,5 +8,5 @@ public class WeatherData
     public double Pressure { get; set; }
     public double WindSpeed { get; set; }
     public double Cloudiness { get; set; }
-    public double PrecipitationProbability { get; set; }
+    public double PrecipitationProbabilityNextHour { get; set; }
 }
