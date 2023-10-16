@@ -16,8 +16,18 @@ Projekt je razdeljen na dva dela, `frontend` in `backend`. V `frontend` mapi se 
 
 ## Namestitev
 
+Celoten projekt najprej kloniramo z ukazom:
 
-`Zaenkrat prazno`
+```sh
+git clone https://github.com/StrajnarFilip/Vaja_RPO.git
+```
+
+Nato se postavimo v mapo `frontend`, namestimo potrebno programsko opremo in zaženemo projekt:
+```sh
+cd Vaja_RPO/frontend
+npm i
+npx ng serve
+```
 
 ## Uporaba
 
