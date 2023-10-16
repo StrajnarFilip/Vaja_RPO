@@ -22,12 +22,29 @@ Celoten projekt najprej kloniramo z ukazom:
 git clone https://github.com/StrajnarFilip/Vaja_RPO.git
 ```
 
-Nato se postavimo v mapo `frontend`, namestimo potrebno programsko opremo in zaženemo projekt:
+Da zaženemo strežniško aplikacijo, se postavimo v mapo `backend` in izvedemo `dotnet run` ukaz:
+
 ```sh
+# Za izvajanje potrebujemo .NET orodje
+cd Vaja_RPO/backend
+dotnet run
+```
+
+Po potrebi se postavimo nazaj v osnovno mapo `Vaja_RPO`.
+```sh
+cd ../../
+```
+
+Nato se postavimo v mapo `frontend`, namestimo potrebno programsko opremo in zaženemo projekt:
+
+```sh
+# Za izvajanje potrebujemo NodeJS in NPM
 cd Vaja_RPO/frontend
 npm i
 npx ng serve
 ```
+
+
 
 ## Uporaba
 
