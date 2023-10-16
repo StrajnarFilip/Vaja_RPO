@@ -1,3 +1,4 @@
+using System.Security.Authentication;
 using System.Text.Json;
 
 namespace backend;
@@ -10,7 +11,7 @@ public class WeatherService
         (double latitude, double longitude),
         (WeatherData weather, DateTime cachedAt)
     > _cachedData;
-    private readonly TimeSpan staleAfter = new TimeSpan(0, 1, 0, 0);
+    private readonly TimeSpan staleAfter = new(0, 1, 0, 0);
 
     public WeatherService(ILogger<WeatherService> logger)
     {
@@ -25,6 +26,7 @@ public class WeatherService
         else
         {
             this._logger.LogError("API key for Open Weather Map is not defined.");
+            throw new InvalidCredentialException("API key for Open Weather Map is not defined.");
         }
     }
 
@@ -39,20 +41,20 @@ public class WeatherService
         JsonElement root = JsonDocument.Parse(response).RootElement;
         JsonElement current = root.GetProperty("current");
         JsonElement hourly = root.GetProperty("hourly");
-        JsonElement pop;
-        bool popExists = hourly[0].TryGetProperty("pop", out pop);
+        bool popExists = hourly[0].TryGetProperty("pop", out JsonElement pop);
         double precipitationProbability = popExists ? pop.GetDouble() : 0;
 
-        WeatherData newData = new WeatherData
-        {
-            Temperature = current.GetProperty("temp").GetDouble(),
-            FeelsLikeTemperature = current.GetProperty("feels_like").GetDouble(),
-            Humidity = current.GetProperty("humidity").GetDouble(),
-            Pressure = current.GetProperty("pressure").GetDouble(),
-            WindSpeed = current.GetProperty("wind_speed").GetDouble(),
-            Cloudiness = current.GetProperty("clouds").GetDouble(),
-            PrecipitationProbabilityNextHour = precipitationProbability
-        };
+        WeatherData newData =
+            new()
+            {
+                Temperature = current.GetProperty("temp").GetDouble(),
+                FeelsLikeTemperature = current.GetProperty("feels_like").GetDouble(),
+                Humidity = current.GetProperty("humidity").GetDouble(),
+                Pressure = current.GetProperty("pressure").GetDouble(),
+                WindSpeed = current.GetProperty("wind_speed").GetDouble(),
+                Cloudiness = current.GetProperty("clouds").GetDouble(),
+                PrecipitationProbabilityNextHour = precipitationProbability
+            };
 
         DateTime cacheTime = DateTime.Now;
         this._logger.LogInformation(
@@ -71,8 +73,8 @@ public class WeatherService
     {
         if (this._cachedData.ContainsKey((latitude, longitude)))
         {
-            var cachedResult = this._cachedData[(latitude, longitude)];
-            var staleAt = cachedResult.cachedAt + staleAfter;
+            var (_, cachedAt) = this._cachedData[(latitude, longitude)];
+            var staleAt = cachedAt + staleAfter;
             if (staleAt < DateTime.Now)
             {
                 this._logger.LogInformation(
