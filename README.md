@@ -3,7 +3,7 @@
 ![.NET](https://img.shields.io/badge/Zaledni_del_narejen_z_.NET-grey?logo=dotnet&labelColor=purple)
 
 
-![Angular](https://img.shields.io/badge/Uporabniški_vmesnik_narejen_z_Angular-grey?logo=angular&labelColor=red)
+![Angular](https://img.shields.io/badge/Uporabniški_vmesnik_narejen_z_Angular-grey?logo=angular&labelColor=A00000)
 
 ## Opis
 V tej nalogi bomo ustvarili spletno aplikacijo za napoved vremena. Nalogo opravljamo za predmet `Razvoj programske opreme`.
