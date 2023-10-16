@@ -43,7 +43,8 @@ cd Vaja_RPO/frontend
 npm i
 npx ng serve
 ```
-
+Spletna aplikacija napisana v Angular ogrodju je na voljo na vratih 4200:
+[Bližnjica do http://127.0.0.1:4200](http://127.0.0.1:4200)
 
 
 ## Uporaba
