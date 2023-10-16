@@ -1,7 +1,6 @@
 using backend;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Logging.AddConsole();
 builder.Logging.SetMinimumLevel(LogLevel.Trace);
 
 // Add services to the container.
