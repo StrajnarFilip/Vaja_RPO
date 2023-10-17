@@ -31,7 +31,7 @@ public class WeatherService
         }
     }
 
-    private WeatherEntity ExtractWeatherEntity(string jsonData)
+    private static WeatherEntity ExtractWeatherEntity(string jsonData)
     {
         JsonElement root = JsonDocument.Parse(jsonData).RootElement;
         JsonElement current = root.GetProperty("current");

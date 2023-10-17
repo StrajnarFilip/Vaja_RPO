@@ -3,3 +3,4 @@
 /.vs
 /.sonarqube
 /run.ps1
+/check.ps1
