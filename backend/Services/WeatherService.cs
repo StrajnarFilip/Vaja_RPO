@@ -74,30 +74,7 @@ public class WeatherService
 
     public async Task<WeatherEntity> WeatherForCoordinates(double latitude, double longitude)
     {
-        if (_cachedData.ContainsKey((latitude, longitude)))
-        {
-            var (jsonWeather, cachedAt) = _cachedData[(latitude, longitude)];
-            var staleAt = cachedAt + staleAfter;
-            if (staleAt < DateTime.Now)
-            {
-                _logger.LogInformation(
-                    "Data for [{lat}, {lon}] is stale. Adding it to cache.",
-                    latitude,
-                    longitude
-                );
-                return await WeatherDataRequest(latitude, longitude);
-            }
-            else
-            {
-                _logger.LogInformation(
-                    "Data for [{lat}, {lon}] is still valid. Taking from cache.",
-                    latitude,
-                    longitude
-                );
-                return ExtractWeatherEntity(jsonWeather);
-            }
-        }
-        else
+        if (!_cachedData.ContainsKey((latitude, longitude)))
         {
             _logger.LogInformation(
                 "No existing Data for [{lat}, {lon}]. Adding it to cache.",
@@ -105,6 +82,27 @@ public class WeatherService
                 longitude
             );
             return await WeatherDataRequest(latitude, longitude);
+        }
+
+        var (jsonWeather, cachedAt) = _cachedData[(latitude, longitude)];
+        var staleAt = cachedAt + staleAfter;
+        if (staleAt < DateTime.Now)
+        {
+            _logger.LogInformation(
+                "Data for [{lat}, {lon}] is stale. Adding it to cache.",
+                latitude,
+                longitude
+            );
+            return await WeatherDataRequest(latitude, longitude);
+        }
+        else
+        {
+            _logger.LogInformation(
+                "Data for [{lat}, {lon}] is still valid. Taking from cache.",
+                latitude,
+                longitude
+            );
+            return ExtractWeatherEntity(jsonWeather);
         }
     }
 }
