@@ -31,6 +31,31 @@ public class WeatherService
         }
     }
 
+    private static List<WeatherForecastEntity> ExtractWeatherForecastEntity(string jsonData)
+    {
+        JsonElement root = JsonDocument.Parse(jsonData).RootElement;
+        JsonElement daily = root.GetProperty("daily");
+        return daily
+            .EnumerateArray()
+            .Select(day =>
+            {
+                JsonElement temperature = day.GetProperty("temp");
+                double lowestTemperature = temperature.GetProperty("min").GetDouble();
+                double highestTemperature = temperature.GetProperty("max").GetDouble();
+                double windSpeed = day.GetProperty("wind_speed").GetDouble();
+                double probabilityOfPrecipitation = day.GetProperty("pop").GetDouble();
+
+                return new WeatherForecastEntity
+                {
+                    LowestDailyTemperature = lowestTemperature,
+                    HighestDailyTemperature = highestTemperature,
+                    AverageWindSpeed = windSpeed,
+                    AveragePrecipitationProbability = probabilityOfPrecipitation
+                };
+            })
+            .ToList();
+    }
+
     private static WeatherEntity ExtractWeatherEntity(string jsonData)
     {
         JsonElement root = JsonDocument.Parse(jsonData).RootElement;

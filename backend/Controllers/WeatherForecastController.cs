@@ -20,9 +20,16 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet("/weather-data")]
-    public async Task<WeatherEntity> Get(long latitude, long longitude)
+    public async Task<WeatherEntity> GetCurrent(long latitude, long longitude)
     {
         this._logger.LogInformation("GET /weather-data");
         return await _weatherService.WeatherForCoordinates(latitude, longitude);
+    }
+
+    [HttpGet("/weather-forecast")]
+    public async Task<WeatherEntity> GetForecast(long latitude, long longitude)
+    {
+        this._logger.LogInformation("GET /weather-forecast");
+        throw new NotImplementedException();
     }
 }
