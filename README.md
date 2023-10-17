@@ -18,26 +18,29 @@ Projekt je razdeljen na dva dela, `frontend` in `backend`. V `frontend` mapi se 
 
 Celoten projekt najprej kloniramo z ukazom:
 
-```sh
+```pwsh
 git clone https://github.com/StrajnarFilip/Vaja_RPO.git
 ```
 
-Da zaženemo strežniško aplikacijo, se postavimo v mapo `backend` in izvedemo `dotnet run` ukaz:
+Da zaženemo strežniško aplikacijo, se postavimo v mapo `backend`, nastavimo okoljsko spremenljivko `OPENWEATHERMAP_KEY`
+in izvedemo `dotnet run` ukaz:
 
-```sh
+```pwsh
 # Za izvajanje potrebujemo .NET orodje
 cd Vaja_RPO/backend
+$env:OPENWEATHERMAP_KEY="xxx"
+# Z Bash je samo: OPENWEATHERMAP_KEY="xxx"
 dotnet run
 ```
 
 Po potrebi se postavimo nazaj v osnovno mapo `Vaja_RPO`.
-```sh
+```pwsh
 cd ../../
 ```
 
 Nato se postavimo v mapo `frontend`, namestimo potrebno programsko opremo in zaženemo projekt:
 
-```sh
+```pwsh
 # Za izvajanje potrebujemo NodeJS in NPM
 cd Vaja_RPO/frontend
 npm i
