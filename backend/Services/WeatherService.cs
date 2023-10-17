@@ -18,7 +18,6 @@ public class WeatherService
     {
         _cachedData = new();
         _logger = logger;
-        _logger.LogInformation("Service is created.");
 
         if (Environment.GetEnvironmentVariable("OPENWEATHERMAP_KEY") is string key)
         {
