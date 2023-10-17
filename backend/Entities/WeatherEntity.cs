@@ -1,6 +1,6 @@
-namespace backend;
+namespace backend.Entities;
 
-public class WeatherData
+public class WeatherEntity
 {
     public double Temperature { get; set; }
     public double FeelsLikeTemperature { get; set; }

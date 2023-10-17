@@ -1,3 +1,5 @@
+using backend.Entities;
+using backend.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -18,7 +20,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet("/weather-data")]
-    public async Task<WeatherData> Get(long latitude, long longitude)
+    public async Task<WeatherEntity> Get(long latitude, long longitude)
     {
         this._logger.LogInformation("GET /weather-data");
         return await _weatherService.WeatherForCoordinates(latitude, longitude);
