@@ -76,7 +76,14 @@ public class WeatherService
         };
     }
 
-    private async Task<WeatherEntity> WeatherDataRequest(double latitude, double longitude)
+    /// <summary>
+    /// This method makes an actual request to OpenWeatherMap's REST API.
+    /// It caches the data it receives.
+    /// </summary>
+    /// <param name="latitude">Latitude of the location.</param>
+    /// <param name="longitude">Longitude of the location.</param>
+    /// <returns>Received JSON data.</returns>
+    private async Task<string> WeatherDataRequest(double latitude, double longitude)
     {
         string requestUri =
             $"https://api.openweathermap.org/data/3.0/onecall?lat={latitude}&lon={longitude}&appid={_openWeatherMapKey}&units=metric";
@@ -94,10 +101,10 @@ public class WeatherService
 
         _cachedData[(latitude, longitude)] = (response, cacheTime);
 
-        return ExtractWeatherEntity(response);
+        return response;
     }
 
-    public async Task<WeatherEntity> WeatherForCoordinates(double latitude, double longitude)
+    private async Task<string> CachedJsonData(double latitude, double longitude)
     {
         if (!_cachedData.ContainsKey((latitude, longitude)))
         {
@@ -127,7 +134,22 @@ public class WeatherService
                 latitude,
                 longitude
             );
-            return ExtractWeatherEntity(jsonWeather);
+            return jsonWeather;
         }
+    }
+
+    public async Task<WeatherEntity> WeatherForCoordinates(double latitude, double longitude)
+    {
+        string jsonData = await CachedJsonData(latitude, longitude);
+        return ExtractWeatherEntity(jsonData);
+    }
+
+    public async Task<List<WeatherForecastEntity>> WeatherForecastForCoordinates(
+        double latitude,
+        double longitude
+    )
+    {
+        string jsonData = await CachedJsonData(latitude, longitude);
+        return ExtractWeatherForecastEntity(jsonData);
     }
 }
