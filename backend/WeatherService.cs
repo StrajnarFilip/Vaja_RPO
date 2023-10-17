@@ -33,7 +33,7 @@ public class WeatherService
     private async Task<WeatherData> WeatherDataRequest(double latitude, double longitude)
     {
         string requestUri =
-            $"https://api.openweathermap.org/data/3.0/onecall?lat={latitude}&lon={longitude}&appid={this._openWeatherMapKey}";
+            $"https://api.openweathermap.org/data/3.0/onecall?lat={latitude}&lon={longitude}&appid={this._openWeatherMapKey}&units=metric";
         string response = await new HttpClient().GetStringAsync(requestUri);
 
         this._logger.LogInformation("Making a request to OpenWeatherMap.");
