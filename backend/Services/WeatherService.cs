@@ -9,8 +9,8 @@ public class WeatherService
     private readonly string _openWeatherMapKey;
     private readonly ILogger<WeatherService> _logger;
     private readonly Dictionary<
-        (double latitude, double longitude),
-        (WeatherEntity weather, DateTime cachedAt)
+        (double Latitude, double Longitude),
+        (string JsonWeather, DateTime CachedAt)
     > _cachedData;
     private readonly TimeSpan staleAfter = new(0, 1, 0, 0);
 
@@ -31,6 +31,26 @@ public class WeatherService
         }
     }
 
+    private WeatherEntity ExtractWeatherEntity(string jsonData)
+    {
+        JsonElement root = JsonDocument.Parse(jsonData).RootElement;
+        JsonElement current = root.GetProperty("current");
+        JsonElement hourly = root.GetProperty("hourly");
+        bool popExists = hourly[0].TryGetProperty("pop", out JsonElement pop);
+        double precipitationProbability = popExists ? pop.GetDouble() : 0;
+
+        return new()
+        {
+            Temperature = current.GetProperty("temp").GetDouble(),
+            FeelsLikeTemperature = current.GetProperty("feels_like").GetDouble(),
+            Humidity = current.GetProperty("humidity").GetDouble(),
+            Pressure = current.GetProperty("pressure").GetDouble(),
+            WindSpeed = current.GetProperty("wind_speed").GetDouble(),
+            Cloudiness = current.GetProperty("clouds").GetDouble(),
+            PrecipitationProbabilityNextHour = precipitationProbability
+        };
+    }
+
     private async Task<WeatherEntity> WeatherDataRequest(double latitude, double longitude)
     {
         string requestUri =
@@ -38,24 +58,6 @@ public class WeatherService
         string response = await new HttpClient().GetStringAsync(requestUri);
 
         _logger.LogInformation("Making a request to OpenWeatherMap.");
-
-        JsonElement root = JsonDocument.Parse(response).RootElement;
-        JsonElement current = root.GetProperty("current");
-        JsonElement hourly = root.GetProperty("hourly");
-        bool popExists = hourly[0].TryGetProperty("pop", out JsonElement pop);
-        double precipitationProbability = popExists ? pop.GetDouble() : 0;
-
-        WeatherEntity newData =
-            new()
-            {
-                Temperature = current.GetProperty("temp").GetDouble(),
-                FeelsLikeTemperature = current.GetProperty("feels_like").GetDouble(),
-                Humidity = current.GetProperty("humidity").GetDouble(),
-                Pressure = current.GetProperty("pressure").GetDouble(),
-                WindSpeed = current.GetProperty("wind_speed").GetDouble(),
-                Cloudiness = current.GetProperty("clouds").GetDouble(),
-                PrecipitationProbabilityNextHour = precipitationProbability
-            };
 
         DateTime cacheTime = DateTime.Now;
         _logger.LogInformation(
@@ -65,16 +67,16 @@ public class WeatherService
             cacheTime
         );
 
-        _cachedData[(latitude, longitude)] = (newData, cacheTime);
+        _cachedData[(latitude, longitude)] = (response, cacheTime);
 
-        return newData;
+        return ExtractWeatherEntity(response);
     }
 
     public async Task<WeatherEntity> WeatherForCoordinates(double latitude, double longitude)
     {
         if (_cachedData.ContainsKey((latitude, longitude)))
         {
-            var (_, cachedAt) = _cachedData[(latitude, longitude)];
+            var (jsonWeather, cachedAt) = _cachedData[(latitude, longitude)];
             var staleAt = cachedAt + staleAfter;
             if (staleAt < DateTime.Now)
             {
@@ -92,7 +94,7 @@ public class WeatherService
                     latitude,
                     longitude
                 );
-                return _cachedData[(latitude, longitude)].weather;
+                return ExtractWeatherEntity(jsonWeather);
             }
         }
         else
