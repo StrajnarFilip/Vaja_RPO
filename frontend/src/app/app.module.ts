@@ -12,9 +12,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { WeatherInformationComponent } from './components/weather-information/weather-information.component';
+import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
 
 @NgModule({
-  declarations: [AppComponent, WeatherInformationComponent],
+  declarations: [
+    AppComponent,
+    WeatherInformationComponent,
+    WeatherForecastComponent,
+  ],
   imports: [
     HttpClientModule,
     MatButtonModule,

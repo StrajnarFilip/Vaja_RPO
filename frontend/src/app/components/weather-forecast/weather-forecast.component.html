@@ -1,0 +1,18 @@
+<div *ngIf="weatherForecast">
+  <table>
+    <thead>
+      <th>Najnižja temperatura v dnevu</th>
+      <th>Najvišja temperatura v dnevu</th>
+      <th>Povprečna hitrost vetra</th>
+      <th>Verjetnost padavin</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let day of weatherForecast">
+        <td>{{ day.lowestDailyTemperature }} °C</td>
+        <td>{{ day.highestDailyTemperature }} °C</td>
+        <td>{{ day.averageWindSpeed }} m/s</td>
+        <td>{{ day.averagePrecipitationProbability * 100 }} %</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
