@@ -1,0 +1,8 @@
+<div *ngIf="weatherData">
+  <div>Trenutna temperatura: {{ weatherData.temperature }} °C</div>
+  <div>Občutek temperature: {{ weatherData.feelsLikeTemperature }} °C</div>
+  <div>Oblačnost: {{ weatherData.cloudiness }} %</div>
+  <div>Vlaga: {{ weatherData.humidity }} %</div>
+  <div>Pritisk: {{ weatherData.pressure }} hPa</div>
+  <div>Hitrost vetra: {{ weatherData.windSpeed }} m/s</div>
+</div>

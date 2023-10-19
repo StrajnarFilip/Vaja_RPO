@@ -28,42 +28,42 @@ export class LocalStorageService {
       `* {
       color: orange;
       background-color: black;
-    }`
+    }`,
     );
     this.themes.set(
       'black-on-white',
       `* {
       color: black;
       background-color: white;
-    }`
+    }`,
     );
     this.themes.set(
       'white-on-black',
       `* {
       color: white;
       background-color: black;
-    }`
+    }`,
     );
     this.themes.set(
       'yellow-on-blue',
       `* {
       color: yellow;
       background-color: darkblue;
-    }`
+    }`,
     );
     this.themes.set(
       'black-on-beige',
       `* {
       color: black;
       background-color: beige;
-    }`
+    }`,
     );
     this.themes.set(
       'green-on-black',
       `* {
       color: lightgreen;
       background-color: black;
-    }`
+    }`,
     );
   }
 }

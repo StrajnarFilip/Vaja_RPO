@@ -1,5 +1,9 @@
 <select [(ngModel)]="selected" (ngModelChange)="newTheme()">
   <option *ngFor="let theme of themeNames" [value]="theme">{{ theme }}</option>
 </select>
+<app-weather-information
+  [latitude]="46"
+  [longitude]="16"
+></app-weather-information>
 
 <router-outlet></router-outlet>
