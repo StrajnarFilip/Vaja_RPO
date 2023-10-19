@@ -7,14 +7,15 @@ import { LocalStorageService } from './services/local-storage.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'frontend';
-  themes = this.localStorage.VALID_THEMES;
+  themeNames = Array.from(this.localStorage.themes.keys());
 
   public selected: string;
 
   constructor(private localStorage: LocalStorageService) {
     this.selected = localStorage.chosenColor;
     this.newTheme();
+
+    console.log(this.themeNames);
   }
 
   newTheme() {
@@ -22,18 +23,10 @@ export class AppComponent {
 
     this.localStorage.chosenColor = this.selected;
 
-    const elements = document.querySelectorAll('*');
-
-    elements.forEach((element) => {
-      // Remove existing theme classes
-      this.localStorage.VALID_THEMES.forEach((theme) => {
-        if (element.classList.contains(theme)) {
-          element.classList.remove(theme);
-        }
-      });
-
-      // Add the selected theme
-      element.classList.add(this.selected);
-    });
+    const element = document.querySelector('#global-style');
+    const style = this.localStorage.themes.get(this.selected);
+    if (element && style) {
+      element.innerHTML = style;
+    }
   }
 }

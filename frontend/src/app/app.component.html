@@ -1,5 +1,5 @@
 <select [(ngModel)]="selected" (ngModelChange)="newTheme()">
-  <option *ngFor="let theme of themes" [value]="theme">{{ theme }}</option>
+  <option *ngFor="let theme of themeNames" [value]="theme">{{ theme }}</option>
 </select>
 
 <router-outlet></router-outlet>

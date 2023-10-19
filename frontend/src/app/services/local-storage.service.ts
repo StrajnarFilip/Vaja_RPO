@@ -5,14 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class LocalStorageService {
   private readonly THEME_KEY = 'theme';
-  public readonly VALID_THEMES = [
-    'default-theme',
-    'black-on-white',
-    'white-on-black',
-    'yellow-on-blue',
-    'black-on-beige',
-    'green-on-black',
-  ];
+  public readonly themes: Map<string, string>;
 
   public get chosenColor(): string {
     const storedColor = window.localStorage.getItem(this.THEME_KEY);
@@ -23,10 +16,54 @@ export class LocalStorageService {
   }
 
   public set chosenColor(newColor: string) {
-    if (this.VALID_THEMES.includes(newColor)) {
+    if (Object.keys(this.themes).includes(newColor)) {
       window.localStorage.setItem(this.THEME_KEY, newColor);
     }
   }
 
-  constructor() {}
+  constructor() {
+    this.themes = new Map();
+    this.themes.set(
+      'default-theme',
+      `* {
+      color: orange;
+      background-color: black;
+    }`,
+    );
+    this.themes.set(
+      'black-on-white',
+      `* {
+      color: black;
+      background-color: white;
+    }`,
+    );
+    this.themes.set(
+      'white-on-black',
+      `* {
+      color: white;
+      background-color: black;
+    }`,
+    );
+    this.themes.set(
+      'yellow-on-blue',
+      `* {
+      color: lightyellow;
+      background-color: darkblue;
+    }`,
+    );
+    this.themes.set(
+      'black-on-beige',
+      `* {
+      color: black;
+      background-color: beige;
+    }`,
+    );
+    this.themes.set(
+      'green-on-black',
+      `* {
+      color: lightgreen;
+      background-color: black;
+    }`,
+    );
+  }
 }
