@@ -14,6 +14,7 @@ export class AppComponent {
 
   constructor(private localStorage: LocalStorageService) {
     this.selected = localStorage.chosenColor;
+    this.newTheme();
   }
 
   newTheme() {
@@ -21,9 +22,18 @@ export class AppComponent {
 
     this.localStorage.chosenColor = this.selected;
 
-    const body = document.querySelector('app-root');
-    if (body) {
-      body.classList.add(this.selected);
-    }
+    const elements = document.querySelectorAll('*');
+
+    elements.forEach((element) => {
+      // Remove existing theme classes
+      this.localStorage.VALID_THEMES.forEach((theme) => {
+        if (element.classList.contains(theme)) {
+          element.classList.remove(theme);
+        }
+      });
+
+      // Add the selected theme
+      element.classList.add(this.selected);
+    });
   }
 }
