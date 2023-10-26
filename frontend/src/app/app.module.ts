@@ -13,12 +13,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { WeatherInformationComponent } from './components/weather-information/weather-information.component';
 import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
+import { MapComponent } from './components/map/map.component';
+import { CityComponent } from './components/city/city.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WeatherInformationComponent,
     WeatherForecastComponent,
+    MapComponent,
+    CityComponent,
   ],
   imports: [
     HttpClientModule,
