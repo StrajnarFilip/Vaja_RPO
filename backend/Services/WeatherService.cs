@@ -43,13 +43,17 @@ public class WeatherService
                 double highestTemperature = temperature.GetProperty("max").GetDouble();
                 double windSpeed = day.GetProperty("wind_speed").GetDouble();
                 double probabilityOfPrecipitation = day.GetProperty("pop").GetDouble();
+                int unix = day.GetProperty("dt").GetInt32();
+                DateTime unixBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                DateTime forDay = unixBase.AddSeconds(unix);
 
                 return new WeatherForecastEntity
                 {
                     LowestDailyTemperature = lowestTemperature,
                     HighestDailyTemperature = highestTemperature,
                     AverageWindSpeed = windSpeed,
-                    AveragePrecipitationProbability = probabilityOfPrecipitation
+                    AveragePrecipitationProbability = probabilityOfPrecipitation,
+                    Date = $"{forDay.Day}.{forDay.Month}.{forDay.Year}"
                 };
             })
             .ToList();
