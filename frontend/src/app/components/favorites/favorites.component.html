@@ -1,0 +1,12 @@
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Priljubljeni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let favorite of this.favorites">
+      <td>{{ favorite.name }}</td>
+    </tr>
+  </tbody>
+</table>

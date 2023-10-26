@@ -2,6 +2,9 @@
   <h3>{{ this.name }}</h3>
   <button (click)="showCurrent()">Trenutno vreme</button>
   <button (click)="showForecast()">Napoved vremena</button>
+  <button (click)="toggleFavorite()">
+    {{ isFavorite ? "Odstrani priljubljeno" : "Dodaj kot priljubljeno" }}
+  </button>
 </div>
 
 <app-weather-forecast

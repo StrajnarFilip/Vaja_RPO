@@ -15,6 +15,7 @@ import { WeatherInformationComponent } from './components/weather-information/we
 import { WeatherForecastComponent } from './components/weather-forecast/weather-forecast.component';
 import { MapComponent } from './components/map/map.component';
 import { CityComponent } from './components/city/city.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CityComponent } from './components/city/city.component';
     WeatherForecastComponent,
     MapComponent,
     CityComponent,
+    FavoritesComponent,
   ],
   imports: [
     HttpClientModule,
