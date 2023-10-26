@@ -6,7 +6,18 @@
   </thead>
   <tbody>
     <tr *ngFor="let favorite of this.favorites">
-      <td>{{ favorite.name }}</td>
+      <a
+        [href]="
+          '/city?lat=' +
+          this.favorite.lat +
+          '&lon=' +
+          this.favorite.lon +
+          '&name=' +
+          this.favorite.name
+        "
+        ><td>{{ favorite.name }}</td></a
+      >
     </tr>
   </tbody>
 </table>
+<button (click)="removeAll()">Odtrani vse priljubljene</button>

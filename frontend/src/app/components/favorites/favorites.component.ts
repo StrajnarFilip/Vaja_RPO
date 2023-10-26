@@ -7,11 +7,14 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
   styleUrls: ['./favorites.component.scss'],
 })
 export class FavoritesComponent {
-  favorites
+  favorites;
 
   constructor(private localStorage: LocalStorageService) {
-    this.favorites = localStorage.favorites
+    this.favorites = localStorage.favorites;
   }
 
-
+  removeAll() {
+    this.localStorage.deleteAllFavorites();
+    this.favorites = this.localStorage.favorites;
+  }
 }

@@ -22,6 +22,10 @@ export class LocalStorageService {
     );
   }
 
+  public deleteAllFavorites() {
+    window.localStorage.setItem(this.FAVORITES_KEY, '[]');
+  }
+
   public isFavorite(name: string): boolean {
     return (
       this.favorites.find((element) => element.name === name) !== undefined
