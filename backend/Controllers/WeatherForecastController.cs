@@ -20,14 +20,14 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet("/weather-data")]
-    public async Task<WeatherEntity> GetCurrent(long latitude, long longitude)
+    public async Task<WeatherEntity> GetCurrent(double latitude, double longitude)
     {
         this._logger.LogInformation("GET /weather-data");
         return await _weatherService.WeatherForCoordinates(latitude, longitude);
     }
 
     [HttpGet("/weather-forecast")]
-    public async Task<List<WeatherForecastEntity>> GetForecast(long latitude, long longitude)
+    public async Task<List<WeatherForecastEntity>> GetForecast(double latitude, double longitude)
     {
         this._logger.LogInformation("GET /weather-forecast");
         return await _weatherService.WeatherForecastForCoordinates(latitude, longitude);
