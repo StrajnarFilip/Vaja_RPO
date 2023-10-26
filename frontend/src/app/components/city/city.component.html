@@ -1,9 +1,18 @@
-<h1>{{ this.name }}</h1>
+<div class="grid">
+  <h3>{{ this.name }}</h3>
+  <button (click)="showCurrent()">Trenutno vreme</button>
+  <button (click)="showForecast()">Napoved vremena</button>
+</div>
 
-<app-weather-forecast [latitude]="this.latitude" [longitude]="this.longitude">
+<app-weather-forecast
+  [latitude]="this.latitude"
+  [longitude]="this.longitude"
+  *ngIf="forecast"
+>
 </app-weather-forecast>
 
 <app-weather-information
+  *ngIf="!forecast"
   [latitude]="this.latitude"
   [longitude]="this.longitude"
 ></app-weather-information>

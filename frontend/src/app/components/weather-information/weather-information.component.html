@@ -1,8 +1,30 @@
-<div *ngIf="weatherData">
-  <div>Trenutna temperatura: {{ weatherData.temperature }} °C</div>
-  <div>Občutek temperature: {{ weatherData.feelsLikeTemperature }} °C</div>
-  <div>Oblačnost: {{ weatherData.cloudiness }} %</div>
-  <div>Vlaga: {{ weatherData.humidity }} %</div>
-  <div>Pritisk: {{ weatherData.pressure }} hPa</div>
-  <div>Hitrost vetra: {{ weatherData.windSpeed }} m/s</div>
-</div>
+<article>
+  <table role="grid" *ngIf="weatherData">
+    <tbody>
+      <tr>
+        <td>Trenutna temperatura</td>
+        <td>{{ weatherData.temperature }} °C</td>
+      </tr>
+      <tr>
+        <td>Občutek temperature</td>
+        <td>{{ weatherData.feelsLikeTemperature }} °C</td>
+      </tr>
+      <tr>
+        <td>Oblačnost</td>
+        <td>{{ weatherData.cloudiness }} %</td>
+      </tr>
+      <tr>
+        <td>Vlaga</td>
+        <td>{{ weatherData.humidity }} %</td>
+      </tr>
+      <tr>
+        <td>Pritisk</td>
+        <td>{{ weatherData.pressure }} hPa</td>
+      </tr>
+      <tr>
+        <td>Hitrost vetra</td>
+        <td>{{ weatherData.windSpeed }} m/s</td>
+      </tr>
+    </tbody>
+  </table>
+</article>

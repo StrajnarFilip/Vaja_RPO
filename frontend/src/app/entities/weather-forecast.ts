@@ -3,4 +3,5 @@ export type WeatherForecast = {
   lowestDailyTemperature: number;
   averagePrecipitationProbability: number;
   averageWindSpeed: number;
+  date: string;
 };

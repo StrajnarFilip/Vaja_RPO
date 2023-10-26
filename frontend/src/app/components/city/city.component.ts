@@ -13,6 +13,8 @@ export class CityComponent implements OnInit {
 
   name: string | null = null;
 
+  forecast = false;
+
   constructor(private activatedRoute: ActivatedRoute) {}
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe((params) => {
@@ -27,5 +29,13 @@ export class CityComponent implements OnInit {
 
       this.name = name;
     });
+  }
+
+  showForecast() {
+    this.forecast = true;
+  }
+
+  showCurrent() {
+    this.forecast = false;
   }
 }

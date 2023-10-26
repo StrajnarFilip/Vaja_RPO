@@ -5,6 +5,7 @@ import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
   { path: 'city', component: CityComponent },
+  { path: 'map', component: MapComponent },
   { path: '**', component: MapComponent },
 ];
 

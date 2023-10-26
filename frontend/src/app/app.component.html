@@ -1,16 +1,18 @@
 <div class="container">
-  <h1 i18n>Weather Forecast</h1>
+  <!--
   <select [(ngModel)]="selected" (ngModelChange)="newTheme()">
     <option *ngFor="let theme of themeNames" [value]="theme">
       {{ theme }}
     </option>
   </select>
-  <!--
-  <app-weather-information
-    [latitude]="46"
-    [longitude]="16"
-  ></app-weather-information>
-  <app-weather-forecast [latitude]="46" [longitude]="16"></app-weather-forecast>
--->
+  -->
+  <nav>
+    <ul>
+      <li routerLink="/map"><h1>Napoved vremena</h1></li>
+    </ul>
+    <ul>
+      <li><a routerLink="/map">Mapa Slovenije</a></li>
+    </ul>
+  </nav>
   <router-outlet></router-outlet>
 </div>

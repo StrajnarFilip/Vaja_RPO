@@ -1,6 +1,7 @@
 <div *ngIf="weatherForecast">
-  <table>
+  <table role="grid">
     <thead>
+      <th>Dan</th>
       <th>Najnižja temperatura v dnevu</th>
       <th>Najvišja temperatura v dnevu</th>
       <th>Povprečna hitrost vetra</th>
@@ -8,6 +9,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let day of weatherForecast">
+        <td>{{ day.date }}</td>
         <td>{{ day.lowestDailyTemperature }} °C</td>
         <td>{{ day.highestDailyTemperature }} °C</td>
         <td>{{ day.averageWindSpeed }} m/s</td>
