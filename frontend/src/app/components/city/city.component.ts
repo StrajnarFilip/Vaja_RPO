@@ -29,8 +29,8 @@ export class CityComponent implements OnInit {
       const name = params.get('name');
 
       if (lat && lon) {
-        this.latitude = Number.parseFloat(lat.replaceAll('.', ','));
-        this.longitude = Number.parseFloat(lat.replaceAll('.', ','));
+        this.latitude = Number.parseFloat(lat);
+        this.longitude = Number.parseFloat(lon);
       }
 
       this.name = name;
