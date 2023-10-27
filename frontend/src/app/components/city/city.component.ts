@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
@@ -19,9 +20,11 @@ export class CityComponent implements OnInit {
   isFavorite = false;
 
   constructor(
+    private api: ApiService,
     private activatedRoute: ActivatedRoute,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
   ) {}
+
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe((params: any) => {
       const lat = params.get('lat');
@@ -31,6 +34,11 @@ export class CityComponent implements OnInit {
       if (lat && lon) {
         this.latitude = Number.parseFloat(lat);
         this.longitude = Number.parseFloat(lon);
+      } else {
+        this.api.getCoordinates(name).subscribe((coordinates) => {
+          this.latitude = coordinates.latitude;
+          this.longitude = coordinates.longitude;
+        });
       }
 
       this.name = name;
