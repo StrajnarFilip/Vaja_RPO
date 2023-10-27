@@ -1,23 +1,43 @@
-<table>
-  <thead>
-    <tr>
-      <th scope="col">Priljubljeni</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let favorite of this.favorites">
-      <a
-        [href]="
-          '/city?lat=' +
-          this.favorite.lat +
-          '&lon=' +
-          this.favorite.lon +
-          '&name=' +
-          this.favorite.name
-        "
-        ><td>{{ favorite.name }}</td></a
-      >
-    </tr>
-  </tbody>
-</table>
-<button (click)="removeAll()">Odtrani vse priljubljene</button>
+<div class="grid">
+  <form>
+    <label for="newfavorite">
+      Nova priljubljena lokacija
+      <input
+        type="text"
+        id="newfavorite"
+        name="newfavorite"
+        [(ngModel)]="newFavorite"
+      />
+    </label>
+
+    <button (click)="addFavorite()">Dodaj</button>
+  </form>
+  <div>
+    <table role="grid">
+      <thead>
+        <tr>
+          <th scope="col">Priljubljeni</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let favorite of this.favorites">
+          <td>
+            <button routerLink="/city" [queryParams]="{ name: this.favorite }">
+              {{ this.favorite }}
+            </button>
+          </td>
+          <td>
+            <button
+              class="secondary outline"
+              (click)="removeFavorite(this.favorite)"
+            >
+              🗑️ Odstrani {{ favorite }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button (click)="removeAll()">Odstrani vse priljubljene</button>
+  </div>
+</div>

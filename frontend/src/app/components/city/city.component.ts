@@ -62,7 +62,7 @@ export class CityComponent implements OnInit {
       if (this.localStorage.isFavorite(this.name)) {
         this.localStorage.removeFavorite(this.name);
       } else {
-        this.localStorage.addFavorite(this.name, this.latitude, this.longitude);
+        this.localStorage.addFavorite(this.name);
       }
       if (this.name) {
         this.isFavorite = this.localStorage.isFavorite(this.name);

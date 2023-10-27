@@ -8,14 +8,12 @@ export class LocalStorageService {
   private readonly FAVORITES_KEY = 'favorites';
   public readonly themes: Map<string, string>;
 
-  public get favorites(): { name: string; lat: number; lon: number }[] {
+  public get favorites(): string[] {
     const data = window.localStorage.getItem(this.FAVORITES_KEY);
     return data ? JSON.parse(data) : [];
   }
 
-  public set favorites(
-    newFavorites: { name: string; lat: number; lon: number }[],
-  ) {
+  public set favorites(newFavorites: string[]) {
     window.localStorage.setItem(
       this.FAVORITES_KEY,
       JSON.stringify(newFavorites),
@@ -27,14 +25,12 @@ export class LocalStorageService {
   }
 
   public isFavorite(name: string): boolean {
-    return (
-      this.favorites.find((element) => element.name === name) !== undefined
-    );
+    return this.favorites.find((element) => element === name) !== undefined;
   }
-  public addFavorite(name: string, lat: number, lon: number) {
+  public addFavorite(name: string) {
     const existingFavorites = this.favorites;
     if (!this.isFavorite(name)) {
-      existingFavorites.push({ name, lat, lon });
+      existingFavorites.push(name);
       this.favorites = existingFavorites;
     }
   }
@@ -42,7 +38,7 @@ export class LocalStorageService {
   public removeFavorite(name: string) {
     const oldFavorites = this.favorites;
     if (this.isFavorite(name)) {
-      this.favorites = oldFavorites.filter((element) => element.name != name);
+      this.favorites = oldFavorites.filter((element) => element != name);
     }
   }
 
