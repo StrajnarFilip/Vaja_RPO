@@ -6,6 +6,6 @@
         public double LowestDailyTemperature { get; set; }
         public double AveragePrecipitationProbability { get; set; }
         public double AverageWindSpeed { get; set; }
-        public string Date { get; set; }
+        public string? Date { get; set; }
     }
 }

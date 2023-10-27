@@ -32,4 +32,11 @@ public class WeatherForecastController : ControllerBase
         this._logger.LogInformation("GET /weather-forecast");
         return await _weatherService.WeatherForecastForCoordinates(latitude, longitude);
     }
+
+    [HttpGet("/coordinates")]
+    public async Task<Coordinates> GetCoordinates(string locationName)
+    {
+        this._logger.LogInformation("GET /coordinates");
+        return await _weatherService.CoordinatesForLocation(locationName);
+    }
 }

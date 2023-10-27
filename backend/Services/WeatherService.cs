@@ -12,11 +12,13 @@ public class WeatherService
         (double Latitude, double Longitude),
         (string JsonWeather, DateTime CachedAt)
     > _cachedData;
+    private readonly Dictionary<string, string> _cachedCoordinates;
     private readonly TimeSpan staleAfter = new(0, 1, 0, 0);
 
     public WeatherService(ILogger<WeatherService> logger)
     {
         _cachedData = new();
+        _cachedCoordinates = new();
         _logger = logger;
 
         if (Environment.GetEnvironmentVariable("OPENWEATHERMAP_KEY") is string key)
@@ -44,7 +46,7 @@ public class WeatherService
                 double windSpeed = day.GetProperty("wind_speed").GetDouble();
                 double probabilityOfPrecipitation = day.GetProperty("pop").GetDouble();
                 int unix = day.GetProperty("dt").GetInt32();
-                DateTime unixBase = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                DateTime unixBase = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
                 DateTime forDay = unixBase.AddSeconds(unix);
 
                 return new WeatherForecastEntity
@@ -77,6 +79,15 @@ public class WeatherService
             Cloudiness = current.GetProperty("clouds").GetDouble(),
             PrecipitationProbabilityNextHour = precipitationProbability
         };
+    }
+
+    private static Coordinates ExtractCoordinates(string jsonData)
+    {
+        JsonElement root = JsonDocument.Parse(jsonData).RootElement;
+        double lat = root[0].GetProperty("lat").GetDouble();
+        double lon = root[0].GetProperty("lon").GetDouble();
+
+        return new Coordinates { Latitude = lat, Longitude = lon };
     }
 
     /// <summary>
@@ -141,6 +152,33 @@ public class WeatherService
         }
     }
 
+    private async Task<string> CoordinatesForLocationNameRequest(string locationName)
+    {
+        string requestUri =
+            $"http://api.openweathermap.org/geo/1.0/direct?q={locationName}&limit=1&appid={_openWeatherMapKey}";
+        string response = await new HttpClient().GetStringAsync(requestUri);
+
+        _cachedCoordinates[locationName] = response;
+
+        return response;
+    }
+
+    private async Task<string> CachedCoordinatesJson(string locationName)
+    {
+        if (!_cachedCoordinates.ContainsKey(locationName))
+        {
+            _logger.LogInformation(
+                "No existing Data for {location}. Adding it to cache.",
+                locationName
+            );
+            return await CoordinatesForLocationNameRequest(locationName);
+        }
+
+        _logger.LogInformation("Coordinates for {location} are already known.", locationName);
+
+        return _cachedCoordinates[locationName];
+    }
+
     public async Task<WeatherEntity> WeatherForCoordinates(double latitude, double longitude)
     {
         string jsonData = await CachedJsonData(latitude, longitude);
@@ -154,5 +192,11 @@ public class WeatherService
     {
         string jsonData = await CachedJsonData(latitude, longitude);
         return ExtractWeatherForecastEntity(jsonData);
+    }
+
+    public async Task<Coordinates> CoordinatesForLocation(string locationName)
+    {
+        string jsonData = await CachedCoordinatesJson(locationName);
+        return ExtractCoordinates(jsonData);
     }
 }
