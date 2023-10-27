@@ -158,6 +158,7 @@ public class WeatherService
             $"http://api.openweathermap.org/geo/1.0/direct?q={locationName}&limit=1&appid={_openWeatherMapKey}";
         string response = await new HttpClient().GetStringAsync(requestUri);
 
+        _logger.LogInformation("Request has been made for coordinates of {location}", locationName);
         _cachedCoordinates[locationName] = response;
 
         return response;
