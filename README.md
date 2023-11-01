@@ -54,7 +54,9 @@ Spletna aplikacija napisana v Angular ogrodju je na voljo na vratih 4200.
 ## Uporaba
 
 
-`Zaenkrat prazno`
+Zaenkrat v testni fazi, deluje zemljevid s pokrainami. 
+Delujejo priljubljeni z možnostjo dodajanja in odvzemanja.
+Deluje prikaz trenutnih podatkov in prognoza za deset dni.
 
 
 ## Podpora
@@ -85,4 +87,4 @@ Projekt je dostopen pod pogoji licence JAVNA LICENCA EVROPSKE UNIJE v. 1.2. Doku
 
 ## Status projekta
 
-Zelo zgodnja faza.
+Malo naprej od zgodnje faze.
