@@ -1,9 +1,9 @@
 <div class="grid">
   <h3>{{ this.name }}</h3>
-  <button (click)="showCurrent()">Trenutno vreme</button>
-  <button (click)="showForecast()">Napoved vremena</button>
+  <button (click)="showCurrent()">{{'trenutno'|translate}}</button>
+  <button (click)="showForecast()">{{'napoved'|translate}}</button>
   <button (click)="toggleFavorite()">
-    {{ isFavorite ? "Odstrani priljubljeno" : "Dodaj kot priljubljeno" }}
+    {{ isFavorite ? "Dodaj med priljubljene" : "Odstrani iz priljubljenih" }}
   </button>
 </div>
 

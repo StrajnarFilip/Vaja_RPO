@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +19,10 @@ import { MapComponent } from './components/map/map.component';
 import { CityComponent } from './components/city/city.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 
+export function HttpLoaderFactory(http:HttpClient){
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +34,15 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
   ],
   imports: [
     HttpClientModule,
+    TranslateModule.forRoot(
+      {
+      loader:{
+        provide:TranslateLoader,
+        useFactory:HttpLoaderFactory,
+        deps:[HttpClient]
+      }
+    }
+    ),
     MatButtonModule,
     BrowserModule,
     AppRoutingModule,
@@ -37,7 +52,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
     MatFormFieldModule,
     MatInputModule,
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+

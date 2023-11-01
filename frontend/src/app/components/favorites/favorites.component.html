@@ -1,7 +1,7 @@
 <div class="grid">
   <form>
     <label for="newfavorite">
-      Nova priljubljena lokacija
+      {{'nova'|translate}}
       <input
         type="text"
         id="newfavorite"
@@ -10,13 +10,13 @@
       />
     </label>
 
-    <button (click)="addFavorite()">Dodaj</button>
+    <button (click)="addFavorite()">{{'dodaj_gumb'|translate}}</button>
   </form>
   <div>
     <table role="grid">
       <thead>
         <tr>
-          <th scope="col">Priljubljeni</th>
+          <th scope="col">{{'priljubljeni'|translate}}</th>
           <th></th>
         </tr>
       </thead>
@@ -32,12 +32,12 @@
               class="secondary outline"
               (click)="removeFavorite(this.favorite)"
             >
-              🗑️ Odstrani {{ favorite }}
+              🗑️ {{'odstrani_gumb'|translate}} {{ favorite }}
             </button>
           </td>
         </tr>
       </tbody>
     </table>
-    <button (click)="removeAll()">Odstrani vse priljubljene</button>
+    <button (click)="removeAll()">{{'odstrani_vse'|translate}}</button>
   </div>
 </div>
