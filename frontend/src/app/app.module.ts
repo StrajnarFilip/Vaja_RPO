@@ -19,7 +19,7 @@ import { MapComponent } from './components/map/map.component';
 import { CityComponent } from './components/city/city.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 
-export function HttpLoaderFactory(http:HttpClient){
+export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
@@ -34,15 +34,13 @@ export function HttpLoaderFactory(http:HttpClient){
   ],
   imports: [
     HttpClientModule,
-    TranslateModule.forRoot(
-      {
-      loader:{
-        provide:TranslateLoader,
-        useFactory:HttpLoaderFactory,
-        deps:[HttpClient]
-      }
-    }
-    ),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
     MatButtonModule,
     BrowserModule,
     AppRoutingModule,
@@ -56,4 +54,3 @@ export function HttpLoaderFactory(http:HttpClient){
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-

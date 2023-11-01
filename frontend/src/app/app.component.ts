@@ -11,39 +11,37 @@ export class AppComponent implements OnInit {
   themeNames = Array.from(this.localStorage.themes.keys());
 
   public selected: string;
-  lang:string = '';
+  lang: string = '';
 
   ngOnInit(): void {
-      const value = localStorage.getItem('lang');
-      console.log(value);
-      
-      if(value)
-      {
-        this.lang = value;
-        this.translateService.use(this.lang);
-      }else
-      {
-        this.lang = 'sl';
-        this.translateService.use(this.lang);
-      }
+    const value = localStorage.getItem('lang');
+    console.log(value);
 
+    if (value) {
+      this.lang = value;
+      this.translateService.use(this.lang);
+    } else {
+      this.lang = 'sl';
+      this.translateService.use(this.lang);
+    }
   }
 
-  ChangeLang(lang: any){
-    const selectedLanguage = lang.target.value;
-    localStorage.setItem('lang',selectedLanguage);
+  changeLanguage() {
+    const selectedLanguage = this.lang;
+    localStorage.setItem('lang', selectedLanguage);
     this.translateService.use(selectedLanguage);
   }
 
-  constructor(private localStorage: LocalStorageService, private translateService:TranslateService) {
+  constructor(
+    private localStorage: LocalStorageService,
+    private translateService: TranslateService,
+  ) {
     this.selected = localStorage.chosenColor;
     this.newTheme();
     this.translateService.setDefaultLang('sl');
 
     console.log(this.themeNames);
   }
-
-  
 
   newTheme() {
     console.log(this.selected);
@@ -57,4 +55,3 @@ export class AppComponent implements OnInit {
     }
   }
 }
-

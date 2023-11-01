@@ -1,25 +1,32 @@
 <div class="container">
-  <!--
-  <select [(ngModel)]="selected" (ngModelChange)="newTheme()">
-    <option *ngFor="let theme of themeNames" [value]="theme">
-      {{ theme }}
-    </option>
-  </select>
-  -->
   <nav>
     <ul>
-      <li routerLink="/map"><h1>{{'napovedvremena'|translate}}</h1></li>
+      <li routerLink="/map">
+        <h1>{{ "napovedvremena" | translate }}</h1>
+      </li>
     </ul>
     <ul>
-      <li><a routerLink="/map">{{'mapa'|translate}}</a></li>
-      <li><a routerLink="/favorites">{{'priljubljeni'|translate}}</a></li>
-    </ul>
-    <ul>
-      <label>{{'jezik'|translate}}</label>
       <li>
-        <select class="form-select" (change)="ChangeLang($event)" name="" id="">
-          <option [selected]="lang==='sl'" value="sl">{{'sl'|translate}}</option>
-          <option [selected]="lang==='en'" value="en">{{'en'|translate}}</option>
+        <a routerLink="/map">{{ "mapa" | translate }}</a>
+      </li>
+      <li>
+        <a routerLink="/favorites">{{ "priljubljeni" | translate }}</a>
+      </li>
+    </ul>
+    <ul>
+      <label>{{ "jezik" | translate }}</label>
+      <li>
+        <select
+          class="form-select"
+          [(ngModel)]="lang"
+          (change)="changeLanguage()"
+        >
+          <option [selected]="lang === 'sl'" value="sl">
+            {{ "sl" | translate }}
+          </option>
+          <option [selected]="lang === 'en'" value="en">
+            {{ "en" | translate }}
+          </option>
         </select>
       </li>
     </ul>

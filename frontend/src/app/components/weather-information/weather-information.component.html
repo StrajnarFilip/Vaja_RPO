@@ -2,27 +2,27 @@
   <table role="grid" *ngIf="weatherData">
     <tbody>
       <tr>
-        <td>{{'trenutna'|translate}}</td>
+        <td>{{ "trenutna" | translate }}</td>
         <td>{{ weatherData.temperature }} °C</td>
       </tr>
       <tr>
-        <td>{{'obcutek'|translate}}</td>
+        <td>{{ "obcutek" | translate }}</td>
         <td>{{ weatherData.feelsLikeTemperature }} °C</td>
       </tr>
       <tr>
-        <td>{{'oblacnost'|translate}}</td>
+        <td>{{ "oblacnost" | translate }}</td>
         <td>{{ weatherData.cloudiness }} %</td>
       </tr>
       <tr>
-        <td>{{'vlaga'|translate}}</td>
+        <td>{{ "vlaga" | translate }}</td>
         <td>{{ weatherData.humidity }} %</td>
       </tr>
       <tr>
-        <td>{{'tlak'|translate}}</td>
+        <td>{{ "tlak" | translate }}</td>
         <td>{{ weatherData.pressure }} hPa</td>
       </tr>
       <tr>
-        <td>{{'hitrost'|translate}}</td>
+        <td>{{ "hitrost" | translate }}</td>
         <td>{{ weatherData.windSpeed }} m/s</td>
       </tr>
     </tbody>

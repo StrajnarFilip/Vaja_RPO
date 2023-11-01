@@ -1,11 +1,11 @@
 <div *ngIf="weatherForecast">
   <table role="grid">
     <thead>
-      <th>{{'dan'|translate}}</th>
-      <th>{{'najnizja'|translate}}</th>
-      <th>{{'najvisja'|translate}}</th>
-      <th>{{'veter'|translate}}</th>
-      <th>{{'dez'|translate}}</th>
+      <th>{{ "dan" | translate }}</th>
+      <th>{{ "najnizja" | translate }}</th>
+      <th>{{ "najvisja" | translate }}</th>
+      <th>{{ "veter" | translate }}</th>
+      <th>{{ "dez" | translate }}</th>
     </thead>
     <tbody>
       <tr *ngFor="let day of weatherForecast">

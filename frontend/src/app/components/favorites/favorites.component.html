@@ -1,7 +1,7 @@
 <div class="grid">
   <form>
     <label for="newfavorite">
-      {{'nova'|translate}}
+      {{ "nova" | translate }}
       <input
         type="text"
         id="newfavorite"
@@ -10,16 +10,15 @@
       />
     </label>
 
-    <button (click)="addFavorite()">{{'dodaj_gumb'|translate}}</button>
+    <button (click)="addFavorite()">{{ "dodaj_gumb" | translate }}</button>
   </form>
   <div>
     <table role="grid">
-      <thead>
-        <tr>
-          <th scope="col">{{'priljubljeni'|translate}}</th>
-          <th></th>
-        </tr>
-      </thead>
+      <caption>
+        {{
+          "priljubljeni" | translate
+        }}
+      </caption>
       <tbody>
         <tr *ngFor="let favorite of this.favorites">
           <td>
@@ -32,12 +31,12 @@
               class="secondary outline"
               (click)="removeFavorite(this.favorite)"
             >
-              🗑️ {{'odstrani_gumb'|translate}} {{ favorite }}
+              🗑️ {{ "odstrani_gumb" | translate }} {{ favorite }}
             </button>
           </td>
         </tr>
       </tbody>
     </table>
-    <button (click)="removeAll()">{{'odstrani_vse'|translate}}</button>
+    <button (click)="removeAll()">{{ "odstrani_vse" | translate }}</button>
   </div>
 </div>
