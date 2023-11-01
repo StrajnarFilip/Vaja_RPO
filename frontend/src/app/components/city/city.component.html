@@ -3,11 +3,7 @@
   <button (click)="showCurrent()">{{ "trenutno" | translate }}</button>
   <button (click)="showForecast()">{{ "napoved" | translate }}</button>
   <button (click)="toggleFavorite()">
-    {{
-      isFavorite
-        ? ("dodajpriljubljen" | translate)
-        : ("odstranipriljubljen" | translate)
-    }}
+    {{ (isFavorite ? "odstranipriljubljen" : "dodajpriljubljen") | translate }}
   </button>
 </div>
 

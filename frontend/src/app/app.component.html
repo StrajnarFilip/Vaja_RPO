@@ -2,29 +2,34 @@
   <nav>
     <ul>
       <li routerLink="/map">
-        <h1>{{ "napovedvremena" | translate }}</h1>
+        <strong>{{ "napovedvremena" | translate }}</strong>
       </li>
     </ul>
     <ul>
       <li>
-        <a routerLink="/map">{{ "mapa" | translate }}</a>
+        <button class="outline" routerLink="/map">
+          {{ "mapa" | translate }}
+        </button>
       </li>
       <li>
-        <a routerLink="/favorites">{{ "priljubljeni" | translate }}</a>
+        <button class="outline" routerLink="/favorites">
+          {{ "priljubljeni" | translate }}
+        </button>
       </li>
-    </ul>
-    <ul>
-      <label>{{ "jezik" | translate }}</label>
+      <li>
+        <label>{{ "jezik" | translate }}</label>
+      </li>
+
       <li>
         <select
           class="form-select"
-          [(ngModel)]="lang"
+          [(ngModel)]="language"
           (change)="changeLanguage()"
         >
-          <option [selected]="lang === 'sl'" value="sl">
+          <option [selected]="language === 'sl'" value="sl">
             {{ "sl" | translate }}
           </option>
-          <option [selected]="lang === 'en'" value="en">
+          <option [selected]="language === 'en'" value="en">
             {{ "en" | translate }}
           </option>
         </select>
