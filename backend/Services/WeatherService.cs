@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Security.Authentication;
 using System.Text.Json;
 using backend.Entities;
@@ -8,11 +9,11 @@ public class WeatherService
 {
     private readonly string _openWeatherMapKey;
     private readonly ILogger<WeatherService> _logger;
-    private readonly Dictionary<
+    private readonly ConcurrentDictionary<
         (double Latitude, double Longitude),
         (string JsonWeather, DateTime CachedAt)
     > _cachedData;
-    private readonly Dictionary<string, string> _cachedCoordinates;
+    private readonly ConcurrentDictionary<string, string> _cachedCoordinates;
     private readonly TimeSpan staleAfter = new(0, 1, 0, 0);
 
     public WeatherService(ILogger<WeatherService> logger)

@@ -2,12 +2,7 @@
   <form>
     <label for="newfavorite">
       {{ "nova" | translate }}
-      <input
-        type="text"
-        id="newfavorite"
-        name="newfavorite"
-        [(ngModel)]="newFavorite"
-      />
+      <input type="text" name="newfavorite" [(ngModel)]="newFavorite" />
     </label>
 
     <button (click)="addFavorite()">{{ "dodaj_gumb" | translate }}</button>

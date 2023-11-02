@@ -8,50 +8,32 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  themeNames = Array.from(this.localStorage.themes.keys());
-
-  public selected: string;
-  lang: string = '';
+  language: string = '';
 
   ngOnInit(): void {
-    const value = localStorage.getItem('lang');
-    console.log(value);
+    const storedLanguage = localStorage.getItem('lang');
 
-    if (value) {
-      this.lang = value;
-      this.translateService.use(this.lang);
+    if (storedLanguage) {
+      this.setLanguage(storedLanguage);
     } else {
-      this.lang = 'sl';
-      this.translateService.use(this.lang);
+      this.setLanguage('sl');
     }
   }
 
   changeLanguage() {
-    const selectedLanguage = this.lang;
-    localStorage.setItem('lang', selectedLanguage);
-    this.translateService.use(selectedLanguage);
+    localStorage.setItem('lang', this.language);
+    this.translateService.use(this.language);
   }
 
   constructor(
     private localStorage: LocalStorageService,
     private translateService: TranslateService,
   ) {
-    this.selected = localStorage.chosenColor;
-    this.newTheme();
     this.translateService.setDefaultLang('sl');
-
-    console.log(this.themeNames);
   }
 
-  newTheme() {
-    console.log(this.selected);
-
-    this.localStorage.chosenColor = this.selected;
-
-    const element = document.querySelector('#global-style');
-    const style = this.localStorage.themes.get(this.selected);
-    if (element && style) {
-      element.innerHTML = style;
-    }
+  setLanguage(language: string) {
+    this.language = language;
+    this.translateService.use(this.language);
   }
 }
