@@ -5,6 +5,14 @@
   "jezik": "Jezik:",
   "sl": "Slovenščina",
   "en": "English",
+  "teme": "Teme",
+  "theme1": "Svetla",
+  "theme2": "Temna",
+  "theme3": "Rumena na modrem",
+  "theme4": "Zelena na črni",
+  "theme5": "Črna na bež",
+  "theme6": "Črna na beli",
+  "theme7": "Bela na črni",
   "trenutno": "Trenutno vreme",
   "napoved": "Napoved vremena",
   "dodaj": "Dodaj med priljubljene",
@@ -25,6 +33,5 @@
   "tlak": "Tlak",
   "hitrost": "Hitrost vetra",
   "dodajpriljubljen": "Dodaj med priljubljene",
-  "odstranipriljubljen": "Odstrani iz priljubljenih",
-  "teme":"Teme:"
+  "odstranipriljubljen": "Odstrani iz priljubljenih"
 }

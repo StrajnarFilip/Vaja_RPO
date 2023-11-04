@@ -3,8 +3,16 @@
   "mapa": "Map of Slovenia",
   "priljubljeni": "Favorites",
   "jezik": "Language:",
-  "sl": "Slovenščina",
+  "sl": "Slovensko",
   "en": "English",
+  "teme": "Themes",
+  "theme1": "Light",
+  "theme2": "Dark",
+  "theme3": "Yellow on blue",
+  "theme4": "Green on black",
+  "theme5": "Black on beige",
+  "theme6": "Black on white",
+  "theme7": "White on black",
   "trenutno": "Current Weather",
   "napoved": "Weather Forcast",
   "dodaj": "Add to Favorites",
@@ -25,6 +33,5 @@
   "tlak": "Pressure",
   "hitrost": "Wind Speed",
   "dodajpriljubljen": "Add to favorites",
-  "odstranipriljubljen": "Remove from favorites",
-  "teme":"Themes:"
+  "odstranipriljubljen": "Remove from favorites"
 }

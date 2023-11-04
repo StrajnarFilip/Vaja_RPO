@@ -9,20 +9,37 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
   language: string = '';
+  theme: string = '';
 
   ngOnInit(): void {
     const storedLanguage = localStorage.getItem('lang');
+    const storedTheme = localStorage.getItem('theme');
+    
 
     if (storedLanguage) {
       this.setLanguage(storedLanguage);
     } else {
       this.setLanguage('sl');
     }
+
+    if (storedTheme) {
+      this.setTheme(storedTheme);
+    }
+    else {
+      this.setTheme('light');
+    }
+    
   }
 
   changeLanguage() {
     localStorage.setItem('lang', this.language);
     this.translateService.use(this.language);
+  }
+
+  changeTheme() {
+    
+    localStorage.setItem('theme', this.theme);
+    document.getElementById("theme-select")?.setAttribute("data-theme",this.theme)
   }
 
   constructor(
@@ -36,4 +53,10 @@ export class AppComponent implements OnInit {
     this.language = language;
     this.translateService.use(this.language);
   }
+  setTheme(theme: string) {
+    this.theme = theme;
+    document.getElementById("theme-select")?.setAttribute("data-theme",this.theme)
+  }
+
+  
 }

@@ -20,12 +20,18 @@
         <label>{{ "teme" | translate }}</label>
       </li>
       <li>
-        <select>
-          <option>Tema1</option>
-          <option>Tema2</option>
-          <option>Tema3</option>
-          <option>Tema4</option>
-          <option>Tema5</option>
+        <select
+          class="form-select"
+          [(ngModel)]="theme"
+          (change)="changeTheme()"
+          >
+          <option value="light">{{ "theme1" | translate }}</option>
+          <option value="dark">{{ "theme2" | translate }}</option>
+          <option value="yellow-blue">{{ "theme3" | translate }}</option>
+          <option value="green-black">{{ "theme4" | translate }}</option>
+          <option value="black-beige">{{ "theme5" | translate }}</option>
+          <option value="black-white">{{ "theme6" | translate }}</option>
+          <option value="white-black">{{ "theme7" | translate }}</option>
         </select>
       </li>
 
@@ -47,6 +53,7 @@
           </option>
         </select>
       </li>
+
     </ul>
   </nav>
   <router-outlet></router-outlet>
