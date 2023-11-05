@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     const storedLanguage = localStorage.getItem('lang');
     const storedTheme = localStorage.getItem('theme');
-    
 
     if (storedLanguage) {
       this.setLanguage(storedLanguage);
@@ -24,11 +23,9 @@ export class AppComponent implements OnInit {
 
     if (storedTheme) {
       this.setTheme(storedTheme);
-    }
-    else {
+    } else {
       this.setTheme('light');
     }
-    
   }
 
   changeLanguage() {
@@ -37,9 +34,10 @@ export class AppComponent implements OnInit {
   }
 
   changeTheme() {
-    
     localStorage.setItem('theme', this.theme);
-    document.getElementById("theme-select")?.setAttribute("data-theme",this.theme)
+    document
+      .getElementById('theme-select')
+      ?.setAttribute('data-theme', this.theme);
   }
 
   constructor(
@@ -53,10 +51,11 @@ export class AppComponent implements OnInit {
     this.language = language;
     this.translateService.use(this.language);
   }
+
   setTheme(theme: string) {
     this.theme = theme;
-    document.getElementById("theme-select")?.setAttribute("data-theme",this.theme)
+    document
+      .getElementById('theme-select')
+      ?.setAttribute('data-theme', this.theme);
   }
-
-  
 }
