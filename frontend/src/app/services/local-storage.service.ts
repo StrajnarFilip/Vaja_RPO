@@ -6,7 +6,25 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   private readonly THEME_KEY = 'theme';
   private readonly FAVORITES_KEY = 'favorites';
-  public readonly themes: Map<string, string>;
+  private readonly LANGUAGE_KEY = 'language';
+
+  public get language(): string {
+    const storedLanguage = window.localStorage.getItem(this.LANGUAGE_KEY);
+    return storedLanguage ?? 'sl';
+  }
+
+  public set language(newLanguage: string) {
+    window.localStorage.setItem(this.LANGUAGE_KEY, newLanguage);
+  }
+
+  public get theme(): string {
+    const storedTheme = window.localStorage.getItem(this.THEME_KEY);
+    return storedTheme ?? 'light';
+  }
+
+  public set theme(newTheme: string) {
+    window.localStorage.setItem(this.THEME_KEY, newTheme);
+  }
 
   public get favorites(): string[] {
     const data = window.localStorage.getItem(this.FAVORITES_KEY);
@@ -42,63 +60,5 @@ export class LocalStorageService {
     }
   }
 
-  public get chosenColor(): string {
-    const storedColor = window.localStorage.getItem(this.THEME_KEY);
-    if (storedColor) {
-      return storedColor;
-    }
-    return 'default-theme';
-  }
-
-  public set chosenColor(newColor: string) {
-    if (Array.from(this.themes.keys()).includes(newColor)) {
-      window.localStorage.setItem(this.THEME_KEY, newColor);
-    }
-  }
-
-  constructor() {
-    this.themes = new Map();
-    this.themes.set(
-      'default-theme',
-      `* {
-      color: orange;
-      background-color: black;
-    }`,
-    );
-    this.themes.set(
-      'black-on-white',
-      `* {
-      color: black;
-      background-color: white;
-    }`,
-    );
-    this.themes.set(
-      'white-on-black',
-      `* {
-      color: white;
-      background-color: black;
-    }`,
-    );
-    this.themes.set(
-      'yellow-on-blue',
-      `* {
-      color: yellow;
-      background-color: darkblue;
-    }`,
-    );
-    this.themes.set(
-      'black-on-beige',
-      `* {
-      color: black;
-      background-color: beige;
-    }`,
-    );
-    this.themes.set(
-      'green-on-black',
-      `* {
-      color: lightgreen;
-      background-color: black;
-    }`,
-    );
-  }
+  constructor() {}
 }

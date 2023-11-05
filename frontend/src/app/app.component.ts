@@ -8,43 +8,31 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  language: string = '';
-  theme: string = '';
-
-  ngOnInit(): void {
-    const storedLanguage = localStorage.getItem('lang');
-    const storedTheme = localStorage.getItem('theme');
-
-    if (storedLanguage) {
-      this.setLanguage(storedLanguage);
-    } else {
-      this.setLanguage('sl');
-    }
-
-    if (storedTheme) {
-      this.setTheme(storedTheme);
-    } else {
-      this.setTheme('light');
-    }
-  }
-
-  changeLanguage() {
-    localStorage.setItem('lang', this.language);
-    this.translateService.use(this.language);
-  }
-
-  changeTheme() {
-    localStorage.setItem('theme', this.theme);
-    document
-      .getElementById('theme-select')
-      ?.setAttribute('data-theme', this.theme);
-  }
+  language: string = 'sl';
+  theme: string = 'light';
 
   constructor(
     private localStorage: LocalStorageService,
     private translateService: TranslateService,
   ) {
     this.translateService.setDefaultLang('sl');
+  }
+
+  ngOnInit(): void {
+    this.setLanguage(this.localStorage.language);
+    this.setTheme(this.localStorage.theme);
+  }
+
+  changeLanguage() {
+    this.localStorage.language = this.language;
+    this.translateService.use(this.language);
+  }
+
+  changeTheme() {
+    this.localStorage.theme = this.theme;
+    document
+      .getElementById('theme-select')
+      ?.setAttribute('data-theme', this.theme);
   }
 
   setLanguage(language: string) {
