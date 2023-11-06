@@ -10,11 +10,15 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent implements OnInit {
   language: string = '';
   theme: string = '';
+  date: string = '';
+  time: string ='';
 
   ngOnInit(): void {
     const storedLanguage = localStorage.getItem('lang');
     const storedTheme = localStorage.getItem('theme');
-    
+    const now = new Date();
+    this.time = now.toLocaleTimeString();
+    this.date = now.toLocaleDateString();
 
     if (storedLanguage) {
       this.setLanguage(storedLanguage);

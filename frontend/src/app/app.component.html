@@ -1,11 +1,14 @@
 <div class="container">
+  <div>
+    <h1 style="text-align: center;" routerLink="/map">
+      <strong>{{ "napovedvremena" | translate }}</strong>
+    </h1>
+    <h3 style="text-align: center;">{{date}}, {{time}}</h3>
   <nav>
-    <ul>
+    <ul><!--
       <li routerLink="/map">
         <strong>{{ "napovedvremena" | translate }}</strong>
-      </li>
-    </ul>
-    <ul>
+      </li>-->
       <li>
         <button class="outline" routerLink="/map">
           {{ "mapa" | translate }}
@@ -46,10 +49,16 @@
           (change)="changeLanguage()"
         >
           <option [selected]="language === 'sl'" value="sl">
-            {{ "sl" | translate }}
+            <img src="/assets/Images/sl.png"> {{ "sl" | translate }}
           </option>
           <option [selected]="language === 'en'" value="en">
             {{ "en" | translate }}
+          </option>
+          <option [selected]="language === 'de'" value="de">
+            {{ "de" | translate }}
+          </option>
+          <option [selected]="language === 'it'" value="it">
+            {{ "it" | translate }}
           </option>
         </select>
       </li>
