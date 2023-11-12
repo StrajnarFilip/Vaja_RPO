@@ -7,6 +7,7 @@
   "en": "English",
   "de": "Deutsch",
   "it": "Italiano",
+  "prc": "中國傳統的）",
   "teme": "Themes",
   "theme1": "Light",
   "theme2": "Dark",
@@ -37,3 +38,5 @@
   "dodajpriljubljen": "Add to Favorites",
   "odstranipriljubljen": "Remove from Favorites"
 }
+
+

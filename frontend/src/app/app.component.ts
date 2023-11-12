@@ -11,14 +11,23 @@ export class AppComponent implements OnInit {
   language: string = '';
   theme: string = '';
   date: string = '';
-  time: string ='';
+  time: string = '';
+  timeformat: string = '';
+  weekday: string = '';
+  hours: string = '';
+  minutes: string = '';
 
   ngOnInit(): void {
     const storedLanguage = localStorage.getItem('lang');
     const storedTheme = localStorage.getItem('theme');
+
     const now = new Date();
-    this.time = now.toLocaleTimeString();
-    this.date = now.toLocaleDateString();
+    const daynames = ["Nedelja", "Ponedeljek", "Torek", "Sreda", "Četrtek", "Petek", "Sobota"];
+    const day = now.getDay();
+    this.weekday = daynames[day];
+    this.date = now.toLocaleDateString("sl-SL");
+    this.hours = now.getHours().toString();
+    this.minutes = now.getMinutes().toString().padStart(2,'0');
 
     if (storedLanguage) {
       this.setLanguage(storedLanguage);

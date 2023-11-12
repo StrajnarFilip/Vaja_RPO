@@ -3,12 +3,9 @@
     <h1 style="text-align: center;" routerLink="/map">
       <strong>{{ "napovedvremena" | translate }}</strong>
     </h1>
-    <h3 style="text-align: center;">{{date}}, {{time}}</h3>
+    <h3 style="text-align: center;">{{weekday}}, {{date}}, {{hours}}:{{minutes}}</h3>
   <nav>
-    <ul><!--
-      <li routerLink="/map">
-        <strong>{{ "napovedvremena" | translate }}</strong>
-      </li>-->
+    <ul>
       <li>
         <button class="outline" routerLink="/map">
           {{ "mapa" | translate }}
@@ -59,6 +56,9 @@
           </option>
           <option [selected]="language === 'it'" value="it">
             {{ "it" | translate }}
+          </option>
+          <option [selected]="language === 'prc'" value="prc">
+            {{ "prc" | translate }}
           </option>
         </select>
       </li>
