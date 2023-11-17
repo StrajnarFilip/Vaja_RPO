@@ -53,10 +53,57 @@ Spletna aplikacija napisana v Angular ogrodju je na voljo na vratih 4200.
 
 ## Uporaba
 
+### Nastavitve
+Spletna aplikacija je intuitivna za uporabo. Na vrhu okna je polje za izbiro jezika. Trenutno so na voljo naslednji jeziki:
 
-Zaenkrat v testni fazi, deluje zemljevid s pokrainami. 
-Delujejo priljubljeni z možnostjo dodajanja in odvzemanja.
-Deluje prikaz trenutnih podatkov in prognoza za deset dni.
+- Slovenščina
+- Angleščina
+- Nemščina
+- Kitajščina
+- Italjanščina
+
+![image](https://github.com/StrajnarFilip/Vaja_RPO/assets/46705237/3523e6c9-2c81-42d0-b28b-e0eb2f0b115a)
+
+
+Na vrhu okna je možno izbratu tudi željeno temo. Trenutno so na voljo naslednje teme:
+
+- Svetla
+- Temna
+- Rumena na modrem
+- Zelena na črni
+- Črna na bež
+- Črna na beli
+- Bela na črni
+
+
+![image](https://github.com/StrajnarFilip/Vaja_RPO/assets/46705237/1257a8ee-a046-444a-b251-ce4196b035a2)
+
+---
+
+Na vrhu okna sta tudi dva velika gumba: `Mapa Slovenije` in `Priljubljeni`.
+
+---
+
+### Mapa Slovenije
+
+Gumb `Mapa Slovenije` prikaže veliko mapo Slovenije z regijami in prikazanimi temperaturami
+mest v teh regijah. Na poljubno regijo lahko tudi pritisnemo in tako se nam odpre okno s podrobnejšimi podatki o trenutnem vremenu in napovedi vremena za to mesto. Na voljo
+so nam novi 3 gumbi. Gumb `Trenutno vreme` (kar je tudi privzeto) nam pokaže podrobne podatke trenutnega vremena. Gumb `Napoved vremena` nam pokaže napoved za naslednjih 7 dni.
+Gumb `Dodaj med priljubljene` pa doda ta kraj na seznam priljubljenih krajev.
+
+![image](https://github.com/StrajnarFilip/Vaja_RPO/assets/46705237/ee166446-af37-43b2-aeaa-f23a2f4ca0ba)
+
+---
+
+### Priljubljeni
+
+Gumb `Priljubljeni` nam odpre okno na katerem lahko vidimo in upravljamo s priljubljenimi kraji.
+V polje lahko vpišemo ime novega kraja, katerega želimo dodati med priljebljene in nato s pritiskom na gumb
+`Dodaj` ga dodamo v seznam. Na desni strani je seznam vse priljubljenih krajev. Vsak kraj lahko pritisnemo
+in tako pridemo do napovedi za ta kraj, lahko pa ga tudi odstranimo s pritiskom na gumb za odstranitev (🗑️).
+Pritisnemo lako tudi gumb, ki odstrani vse priljubljene kraje.
+
+![image](https://github.com/StrajnarFilip/Vaja_RPO/assets/46705237/40fe8bbd-aaf3-4f98-8eca-af9faceee6fb)
 
 
 ## Podpora
@@ -75,7 +122,7 @@ Znajdite se.
 
 ## Avtorji in zahvala
 
-Zahvaljujemo se Žiki Jeram, Damijan Jančarju in Filip Strajnarju za potrpežljivost.
+Zahvaljujemo se Žiki Jeram, Damijanu Jančarju in Filipu Strajnarju za potrpežljivost.
 
 ## Licenca
 
@@ -87,4 +134,4 @@ Projekt je dostopen pod pogoji licence JAVNA LICENCA EVROPSKE UNIJE v. 1.2. Doku
 
 ## Status projekta
 
-Malo naprej od zgodnje faze.
+Zaključna faza.
