@@ -115,6 +115,11 @@ Znajdite se.
 
 `Zaenkrat prazno`
 
+## Testiranje
+
+
+Aplikacija testirana na realnih podatkih. Vsi testi pokazali previlno delovanje aplikacije.
+
 ## Prispevki
 
 
