@@ -36,5 +36,12 @@
   "tlak": "Tlak",
   "hitrost": "Hitrost vetra",
   "dodajpriljubljen": "Dodaj med priljubljene",
-  "odstranipriljubljen": "Odstrani iz priljubljenih"
+  "odstranipriljubljen": "Odstrani iz priljubljenih",
+  "Nedelja": "Nedelja",
+  "Ponedeljek": "Ponedeljek",
+  "Torek": "Torek",
+  "Sreda": "Sreda",
+  "Četrtek": "Četrtek",
+  "Petek": "Petek",
+  "Sobota": "Sobota"
 }

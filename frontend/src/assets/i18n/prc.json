@@ -36,5 +36,12 @@
   "tlak": "壓力",
   "hitrost": "風速",
   "dodajpriljubljen": "加入收藏夾",
-  "odstranipriljubljen": "從收藏夾中刪除"
+  "odstranipriljubljen": "從收藏夾中刪除",
+  "Nedelja": "星期日",
+  "Ponedeljek": "星期一",
+  "Torek": "星期二",
+  "Sreda": "星期三",
+  "Četrtek": "星期四",
+  "Petek": "星期五",
+  "Sobota": "星期六"
 }

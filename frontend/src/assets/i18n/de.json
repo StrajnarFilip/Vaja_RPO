@@ -36,5 +36,12 @@
   "tlak": "Druck",
   "hitrost": "Windgeschwindigkeit",
   "dodajpriljubljen": "Zu Favoriten hinzufügen",
-  "odstranipriljubljen": "Aus Favoriten entfernen"
+  "odstranipriljubljen": "Aus Favoriten entfernen",
+  "Nedelja": "Sonntag",
+  "Ponedeljek": "Montag",
+  "Torek": "Dienstag",
+  "Sreda": "Mittwoch",
+  "Četrtek": "Donnerstag",
+  "Petek": "Freitag",
+  "Sobota": "Samstag"
 }

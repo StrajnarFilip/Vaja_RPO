@@ -36,5 +36,12 @@
   "tlak": "Pressure",
   "hitrost": "Wind Speed",
   "dodajpriljubljen": "Add to Favorites",
-  "odstranipriljubljen": "Remove from Favorites"
+  "odstranipriljubljen": "Remove from Favorites",
+  "Nedelja": "Sunday",
+  "Ponedeljek": "Monday",
+  "Torek": "Tuesday",
+  "Sreda": "Wednesday",
+  "Četrtek": "Thursday",
+  "Petek": "Friday",
+  "Sobota": "Saturday"
 }

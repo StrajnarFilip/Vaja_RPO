@@ -36,5 +36,12 @@
   "tlak": "Pressione",
   "hitrost": "Velocità del vento",
   "dodajpriljubljen": "Aggiungi a Preferiti",
-  "odstranipriljubljen": "Rimuovi dai preferiti"
+  "odstranipriljubljen": "Rimuovi dai preferiti",
+  "Nedelja": "Domenica",
+  "Ponedeljek": "Lunedì",
+  "Torek": "Martedì",
+  "Sreda": "Mercoledì",
+  "Četrtek": "Giovedì",
+  "Petek": "Venerdì",
+  "Sobota": "Sabato"
 }
