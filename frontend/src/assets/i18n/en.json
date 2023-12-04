@@ -43,5 +43,6 @@
   "Sreda": "Wednesday",
   "Četrtek": "Thursday",
   "Petek": "Friday",
-  "Sobota": "Saturday"
+  "Sobota": "Saturday",
+  "graf": "Prediction graph"
 }
