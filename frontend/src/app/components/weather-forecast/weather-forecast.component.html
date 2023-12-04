@@ -10,9 +10,9 @@
     <tbody>
       <tr *ngFor="let day of weatherForecast">
         <td>{{ day.date }}</td>
-        <td>{{ day.lowestDailyTemperature }} °C</td>
-        <td>{{ day.highestDailyTemperature }} °C</td>
-        <td>{{ day.averageWindSpeed }} m/s</td>
+        <td>{{ day.lowestDailyTemperature | numberRounding }} °C</td>
+        <td>{{ day.highestDailyTemperature | numberRounding }} °C</td>
+        <td>{{ day.averageWindSpeed | numberRounding }} m/s</td>
         <td>{{ day.averagePrecipitationProbability * 100 }} %</td>
       </tr>
     </tbody>

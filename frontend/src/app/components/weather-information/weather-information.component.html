@@ -3,11 +3,11 @@
     <tbody>
       <tr>
         <td>{{ "trenutna" | translate }}</td>
-        <td>{{ weatherData.temperature }} °C</td>
+        <td>{{ weatherData.temperature | numberRounding }} °C</td>
       </tr>
       <tr>
         <td>{{ "obcutek" | translate }}</td>
-        <td>{{ weatherData.feelsLikeTemperature }} °C</td>
+        <td>{{ weatherData.feelsLikeTemperature | numberRounding }} °C</td>
       </tr>
       <tr>
         <td>{{ "oblacnost" | translate }}</td>
@@ -23,7 +23,7 @@
       </tr>
       <tr>
         <td>{{ "hitrost" | translate }}</td>
-        <td>{{ weatherData.windSpeed }} m/s</td>
+        <td>{{ weatherData.windSpeed | numberRounding }} m/s</td>
       </tr>
     </tbody>
   </table>

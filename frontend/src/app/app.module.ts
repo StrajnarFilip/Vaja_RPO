@@ -21,6 +21,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { WeatherChartComponent } from './components/weather-chart/weather-chart.component';
 
 import { NgxEchartsModule } from 'ngx-echarts';
+import { NumberRoundingPipe } from './pipes/number-rounding.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -35,6 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CityComponent,
     FavoritesComponent,
     WeatherChartComponent,
+    NumberRoundingPipe,
   ],
   imports: [
     HttpClientModule,
