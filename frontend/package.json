@@ -23,6 +23,8 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@picocss/pico": "^1.5.10",
+    "echarts": "^5.4.3",
+    "ngx-echarts": "^17.1.0",
     "ngx-translate": "^0.0.1-security",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

@@ -18,6 +18,9 @@ import { WeatherForecastComponent } from './components/weather-forecast/weather-
 import { MapComponent } from './components/map/map.component';
 import { CityComponent } from './components/city/city.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
+import { WeatherChartComponent } from './components/weather-chart/weather-chart.component';
+
+import { NgxEchartsModule } from 'ngx-echarts';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -31,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MapComponent,
     CityComponent,
     FavoritesComponent,
+    WeatherChartComponent,
   ],
   imports: [
     HttpClientModule,
@@ -40,6 +44,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
+    }),
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
     }),
     MatButtonModule,
     BrowserModule,

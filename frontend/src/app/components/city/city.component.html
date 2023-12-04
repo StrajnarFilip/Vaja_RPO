@@ -2,6 +2,7 @@
   <h3>{{ this.name }}</h3>
   <button (click)="showCurrent()">{{ "trenutno" | translate }}</button>
   <button (click)="showForecast()">{{ "napoved" | translate }}</button>
+  <button (click)="showChart()">{{ "📊" + ("napoved" | translate) }}</button>
   <button (click)="toggleFavorite()">
     {{ (isFavorite ? "odstranipriljubljen" : "dodajpriljubljen") | translate }}
   </button>
@@ -10,12 +11,18 @@
 <app-weather-forecast
   [latitude]="this.latitude"
   [longitude]="this.longitude"
-  *ngIf="forecast"
+  *ngIf="this.displayOption == 'forecast'"
 >
 </app-weather-forecast>
 
 <app-weather-information
-  *ngIf="!forecast"
+  *ngIf="this.displayOption == 'information'"
   [latitude]="this.latitude"
   [longitude]="this.longitude"
 ></app-weather-information>
+
+<app-weather-chart
+  *ngIf="this.displayOption == 'chart'"
+  [latitude]="this.latitude"
+  [longitude]="this.longitude"
+></app-weather-chart>

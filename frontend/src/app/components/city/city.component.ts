@@ -15,14 +15,14 @@ export class CityComponent implements OnInit {
 
   name: string | null = null;
 
-  forecast = false;
+  displayOption = 'information';
 
   isFavorite = false;
 
   constructor(
     private api: ApiService,
     private activatedRoute: ActivatedRoute,
-    private localStorage: LocalStorageService,
+    private localStorage: LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -50,11 +50,15 @@ export class CityComponent implements OnInit {
   }
 
   showForecast() {
-    this.forecast = true;
+    this.displayOption = 'forecast';
   }
 
   showCurrent() {
-    this.forecast = false;
+    this.displayOption = 'information';
+  }
+
+  showChart() {
+    this.displayOption = 'chart';
   }
 
   toggleFavorite() {
