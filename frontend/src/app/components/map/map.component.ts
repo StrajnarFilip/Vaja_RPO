@@ -18,7 +18,7 @@ export class MapComponent implements OnInit {
     'Nova Gorica',
     'Koper',
     'Postojna',
-    'Novo Mesto',
+    'Novo mesto',
     'Krško',
     'Trbovlje',
   ];
