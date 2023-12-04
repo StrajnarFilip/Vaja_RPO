@@ -8,19 +8,53 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  language: string = 'sl';
-  theme: string = 'light';
+  language: string = '';
+  theme: string = '';
+  date: string = '';
+  time: string = '';
+  timeformat: string = '';
+  weekday: string = '';
+  hours: string = '';
+  minutes: string = '';
+
+  ngOnInit(): void {
+    const storedLanguage = localStorage.getItem('lang');
+    const storedTheme = localStorage.getItem('theme');
+
+    const now = new Date();
+    const daynames = [
+      'Nedelja',
+      'Ponedeljek',
+      'Torek',
+      'Sreda',
+      'Četrtek',
+      'Petek',
+      'Sobota',
+    ];
+    const day = now.getDay();
+    this.weekday = daynames[day];
+    this.date = now.toLocaleDateString('sl-SL');
+    this.hours = now.getHours().toString();
+    this.minutes = now.getMinutes().toString().padStart(2, '0');
+
+    if (storedLanguage) {
+      this.setLanguage(storedLanguage);
+    } else {
+      this.setLanguage('sl');
+    }
+
+    if (storedTheme) {
+      this.setTheme(storedTheme);
+    } else {
+      this.setTheme('light');
+    }
+  }
 
   constructor(
     private localStorage: LocalStorageService,
     private translateService: TranslateService,
   ) {
     this.translateService.setDefaultLang('sl');
-  }
-
-  ngOnInit(): void {
-    this.setLanguage(this.localStorage.language);
-    this.setTheme(this.localStorage.theme);
   }
 
   changeLanguage() {

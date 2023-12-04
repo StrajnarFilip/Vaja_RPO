@@ -1,59 +1,71 @@
 <div class="container">
-  <nav>
-    <ul>
-      <li routerLink="/map">
-        <strong>{{ "napovedvremena" | translate }}</strong>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <button class="outline" routerLink="/map">
-          {{ "mapa" | translate }}
-        </button>
-      </li>
-      <li>
-        <button class="outline" routerLink="/favorites">
-          {{ "priljubljeni" | translate }}
-        </button>
-      </li>
-      <li>
-        <label>{{ "teme" | translate }}</label>
-      </li>
-      <li>
-        <select
-          class="form-select"
-          [(ngModel)]="theme"
-          (change)="changeTheme()"
-        >
-          <option value="light">{{ "theme1" | translate }}</option>
-          <option value="dark">{{ "theme2" | translate }}</option>
-          <option value="yellow-blue">{{ "theme3" | translate }}</option>
-          <option value="green-black">{{ "theme4" | translate }}</option>
-          <option value="black-beige">{{ "theme5" | translate }}</option>
-          <option value="black-white">{{ "theme6" | translate }}</option>
-          <option value="white-black">{{ "theme7" | translate }}</option>
-        </select>
-      </li>
+  <div>
+    <h1 style="text-align: center" routerLink="/map">
+      <strong>{{ "napovedvremena" | translate }}</strong>
+    </h1>
+    <h3 style="text-align: center">
+      {{ weekday }}, {{ date }}, {{ hours }}:{{ minutes }}
+    </h3>
+    <nav>
+      <ul>
+        <li>
+          <button class="outline" routerLink="/map">
+            {{ "mapa" | translate }}
+          </button>
+        </li>
+        <li>
+          <button class="outline" routerLink="/favorites">
+            {{ "priljubljeni" | translate }}
+          </button>
+        </li>
+        <li>
+          <label>{{ "teme" | translate }}</label>
+        </li>
+        <li>
+          <select
+            class="form-select"
+            [(ngModel)]="theme"
+            (change)="changeTheme()"
+          >
+            <option value="light">{{ "theme1" | translate }}</option>
+            <option value="dark">{{ "theme2" | translate }}</option>
+            <option value="yellow-blue">{{ "theme3" | translate }}</option>
+            <option value="green-black">{{ "theme4" | translate }}</option>
+            <option value="black-beige">{{ "theme5" | translate }}</option>
+            <option value="black-white">{{ "theme6" | translate }}</option>
+            <option value="white-black">{{ "theme7" | translate }}</option>
+          </select>
+        </li>
 
-      <li>
-        <label>{{ "jezik" | translate }}</label>
-      </li>
+        <li>
+          <label>{{ "jezik" | translate }}</label>
+        </li>
 
-      <li>
-        <select
-          class="form-select"
-          [(ngModel)]="language"
-          (change)="changeLanguage()"
-        >
-          <option [selected]="language === 'sl'" value="sl">
-            {{ "sl" | translate }}
-          </option>
-          <option [selected]="language === 'en'" value="en">
-            {{ "en" | translate }}
-          </option>
-        </select>
-      </li>
-    </ul>
-  </nav>
-  <router-outlet></router-outlet>
+        <li>
+          <select
+            class="form-select"
+            [(ngModel)]="language"
+            (change)="changeLanguage()"
+          >
+            <option [selected]="language === 'sl'" value="sl">
+              <img src="/assets/Images/sl.png" /> {{ "sl" | translate }}
+            </option>
+            <option [selected]="language === 'en'" value="en">
+              {{ "en" | translate }}
+            </option>
+            <option [selected]="language === 'de'" value="de">
+              {{ "de" | translate }}
+            </option>
+            <option [selected]="language === 'it'" value="it">
+              {{ "it" | translate }}
+            </option>
+            <option [selected]="language === 'prc'" value="prc">
+              {{ "prc" | translate }}
+            </option>
+          </select>
+        </li>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
 </div>
