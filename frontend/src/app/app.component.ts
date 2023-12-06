@@ -18,8 +18,8 @@ export class AppComponent implements OnInit {
   minutes: string = '';
 
   ngOnInit(): void {
-    const storedLanguage = localStorage.getItem('lang');
-    const storedTheme = localStorage.getItem('theme');
+    const storedLanguage = this.localStorage.language
+    const storedTheme = this.localStorage.theme
 
     const now = new Date();
     const daynames = [
