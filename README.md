@@ -108,12 +108,8 @@ Pritisnemo lako tudi gumb, ki odstrani vse priljubljene kraje.
 
 ## Podpora
 
-Znajdite se.
+V primeru težav, se zanjdite sami. Tudi mi ne vemo odgovora. 😎
 
-## Razvojno drevo
-
-
-`Zaenkrat prazno`
 
 ## Testiranje
 
